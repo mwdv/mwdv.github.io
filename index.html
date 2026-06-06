@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siti Nurhayati Iskandar — Social Media Manager Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F8F4ED; --ink: #1A1410; --ink-light: #5C5248;
+    --gold: #C9954A; --gold-pale: #F2E8D9; --white: #FFFFFF;
+    --border: rgba(26,20,16,0.12);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5%; background: rgba(248,244,237,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--ink-light); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 5% 5rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 55vw; height: 55vw; border-radius: 50%; background: var(--gold-pale); opacity: 0.6; z-index: 0; }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .hero-tag { display: inline-block; background: var(--gold-pale); color: var(--gold); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 2rem; margin-bottom: 1.5rem; border: 1px solid rgba(201,149,74,0.25); }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; font-weight: 700; margin-bottom: 1.5rem; }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero p { font-size: 1.1rem; color: var(--ink-light); font-weight: 300; max-width: 520px; margin-bottom: 2.5rem; line-height: 1.8; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn-primary { display: inline-block; background: var(--ink); color: var(--white); padding: 0.85rem 2rem; border-radius: 3px; text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+  .btn-secondary { display: inline-block; color: var(--ink-light); padding: 0.85rem 0; text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1.5px solid var(--gold); transition: color 0.2s; }
+  .btn-secondary:hover { color: var(--gold); }
+  .stats { background: var(--ink); padding: 2.5rem 5%; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; }
+  .stat { text-align: center; }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold); }
+  .stat-label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(248,244,237,0.5); margin-top: 0.2rem; }
+  section { padding: 6rem 5%; }
+  .section-tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+  .section-subtitle { color: var(--ink-light); font-weight: 300; font-size: 1.05rem; max-width: 520px; margin-bottom: 3.5rem; }
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
+  .about-photo-placeholder { width: 100%; aspect-ratio: 3/4; background: var(--gold-pale); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 0.78rem; overflow: hidden; }
+  .about-photo-placeholder img { width:100%; height:100%; object-fit:cover; display:block; }
+  .about-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 1.25rem; }
+  .about-text h2 em { font-style: italic; color: var(--gold); }
+  .about-text p { color: var(--ink-light); font-weight: 300; font-size: 1rem; line-height: 1.85; margin-bottom: 1rem; }
+  .skills-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.75rem; }
+  .skill-tag { background: var(--gold-pale); color: var(--ink); font-size: 0.78rem; font-weight: 500; padding: 0.35rem 0.9rem; border-radius: 2rem; border: 1px solid rgba(201,149,74,0.2); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5px; background: var(--border); border: 1.5px solid var(--border); }
+  .service-card { background: var(--cream); padding: 2.5rem 2rem; transition: background 0.25s; }
+  .service-card:hover { background: var(--gold-pale); }
+  .service-number { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; color: rgba(26,20,16,0.08); margin-bottom: 1rem; line-height: 1; }
+  .service-card h3 { font-size: 1rem; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 0.75rem; text-transform: uppercase; }
+  .service-card p { font-size: 0.9rem; color: var(--ink-light); font-weight: 300; line-height: 1.7; }
+  .experience { background: var(--white); }
+  .timeline { max-width: 820px; }
+  .timeline-item { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); }
+  .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .timeline-date { text-align: right; padding-top: 0.2rem; }
+  .timeline-date-label { font-size: 0.8rem; font-weight: 500; color: var(--gold); letter-spacing: 0.06em; line-height: 1.5; }
+  .timeline-company { font-size: 0.75rem; color: var(--ink-light); margin-top: 0.25rem; font-weight: 300; }
+  .timeline-content h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.25rem; }
+  .timeline-role { font-size: 0.8rem; color: var(--gold); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .timeline-content p { font-size: 0.9rem; color: var(--ink-light); font-weight: 300; line-height: 1.75; }
+  .work { background: var(--cream); }
+  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 2rem; }
+  .work-card { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; background: var(--white); }
+  .work-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,20,16,0.1); }
+  .work-card-img { height: 190px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: white; font-weight: 700; background-size: cover; background-position: center; position: relative; background-blend-mode: overlay; }
+  .c1 { background: linear-gradient(135deg, #C9954A 0%, #E8B87A 100%); }
+  .c2 { background: linear-gradient(135deg, #3D4A5C 0%, #5C7080 100%); }
+  .c3 { background: linear-gradient(135deg, #6A3D5C 0%, #A06080 100%); }
+  .c4 { background: linear-gradient(135deg, #2E5C4A 0%, #4A8C72 100%); }
+  .work-card-body { padding: 1.5rem; }
+  .work-card-tag { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 0.5rem; }
+  .work-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 0.5rem; }
+  .work-card p { font-size: 0.88rem; color: var(--ink-light); font-weight: 300; line-height: 1.65; }
+  .achievements { background: var(--gold-pale); }
+  .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .achievement-card { background: var(--white); padding: 1.75rem; border-radius: 4px; border: 1px solid rgba(201,149,74,0.15); }
+  .achievement-stat { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); margin-bottom: 0.25rem; }
+  .achievement-card h3 { font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+  .achievement-card p { font-size: 0.88rem; color: var(--ink-light); font-weight: 300; line-height: 1.65; }
+  .contact { background: var(--ink); color: var(--white); text-align: center; }
+  .contact .section-title { color: var(--white); }
+  .contact .section-subtitle { color: rgba(248,244,237,0.55); margin: 0 auto 2.5rem; }
+  .contact .section-tag { color: var(--gold); }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .contact-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.75rem; border: 1px solid rgba(248,244,237,0.2); border-radius: 3px; color: rgba(248,244,237,0.8); text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.04em; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+  .contact-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,149,74,0.05); }
+  .contact-email { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2.5vw, 1.7rem); color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,149,74,0.3); padding-bottom: 0.25rem; }
+  footer { text-align: center; padding: 1.5rem 5%; background: #0F0C09; font-size: 0.78rem; color: rgba(248,244,237,0.25); letter-spacing: 0.04em; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-content > * { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-photo-placeholder { max-width: 240px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .timeline-date { text-align: left; }
+  }
+  @media (max-width: 640px) { .nav-links { display: none; } section { padding: 4rem 5%; } }
+  .brand-showcase { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .brand-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; align-items: center; margin: 2rem 0; }
+  .brand-item { font-family: 'Playfair Display', serif; font-weight: 500; color: var(--ink-light); font-size: 1.1rem; letter-spacing: 0.02em; opacity: 0.7; transition: opacity 0.2s; }
+  .brand-item:hover { opacity: 1; color: var(--gold); }
+  .case-studies { background: var(--cream); }
+  .casestudy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+  .casestudy-card { background: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  .casestudy-card .work-card-img { height: 180px; background: linear-gradient(135deg, #7b5a3b 0%, #b88b4a 100%); font-size: 1rem; flex-direction: column; gap: 0.5rem; text-align: center; padding: 1rem; }
+  .casestudy-card .work-card-img span { font-size: 1.8rem; display: block; }
+  .casestudy-card .work-card-body { padding: 1.5rem; }
+  .role-badge { display: inline-block; background: var(--gold-pale); color: var(--gold); font-size: 0.7rem; border-radius: 20px; padding: 0.2rem 0.8rem; margin-bottom: 0.75rem; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Siti Nurhayati</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">Social Media Manager · 7+ Years · Bogor, Indonesia</span>
+    <h1>Turning content<br>into <em>measurable</em><br>business results.</h1>
+    <p>I develop and execute high-impact social media strategies that build brand awareness and drive real conversions — from strategy and copywriting to team leadership, KOL management, and 360° campaigns.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Work with me</a>
+      <a href="#work" class="btn-secondary">See my work</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-number">7+</div><div class="stat-label">Years in digital marketing</div></div>
+  <div class="stat"><div class="stat-number">40.7%</div><div class="stat-label">Instagram follower growth</div></div>
+  <div class="stat"><div class="stat-number">5.6%</div><div class="stat-label">Engagement rate (above benchmark)</div></div>
+  <div class="stat"><div class="stat-number">200+</div><div class="stat-label">New leads per campaign</div></div>
+</div>
+
+<section id="about" class="about">
+  <div class="about-grid">
+    <div>
+      <img src="imag.png" alt="Siti Nurhayati Iskandar" style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:4px;">
+    </div>
+    <div class="about-text">
+      <p class="section-tag">About me</p>
+      <h2>Strategy-first,<br><em>results-driven</em> SMM.</h2>
+      <p>I'm Siti Nurhayati Iskandar — a social media manager with 7+ years of expertise in digital marketing, based in Bogor, Indonesia. I specialize in developing and executing social media strategies that build brand awareness and translate content into measurable business outcomes. My background spans creative agencies (TamankotaID, Toolbar), logistics corporations (JDL Express Indonesia), and multiple brand verticals, giving me a 360-degree view of how brands grow.</p>
+      <p>I lead and mentor teams, oversee content workflows, manage KOL partnerships, and handle paid ad budgets. Known for consistent 90%+ client satisfaction and high-impact campaign delivery.</p>
+      <p>Platforms: Instagram · TikTok · YouTube · LinkedIn · Facebook · Website</p>
+      <div class="skills-row">
+        <span class="skill-tag">Social Strategy</span><span class="skill-tag">Copywriting</span><span class="skill-tag">Content Production</span>
+        <span class="skill-tag">Team Leadership</span><span class="skill-tag">KOL Management</span><span class="skill-tag">Paid Ads</span>
+        <span class="skill-tag">Analytics & Reporting</span><span class="skill-tag">Crisis Handling</span><span class="skill-tag">Lead Generation</span>
+        <span class="skill-tag">PR & Media Handling</span><span class="skill-tag">Editorial Planning</span><span class="skill-tag">Brand Communication</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <p class="section-tag">What I offer</p>
+  <h2 class="section-title">Services built for<br>real growth.</h2>
+  <p class="section-subtitle">From strategy to execution — every layer of your social presence, handled.</p>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-number">01</div><h3>Social Media Strategy</h3><p>Platform audits, content pillars, editorial planning, and 360-degree campaign design aligned with awareness, engagement, and conversion goals.</p></div>
+    <div class="service-card"><div class="service-number">02</div><h3>Content & Copywriting</h3><p>Persuasive captions, creative briefs, Reels concepts, and full monthly content calendars crafted to resonate and convert across every format.</p></div>
+    <div class="service-card"><div class="service-number">03</div><h3>Account Management</h3><p>Day-to-day management across Instagram, TikTok, LinkedIn, Facebook, YouTube — consistent feed, active engagement, swift crisis handling.</p></div>
+    <div class="service-card"><div class="service-number">04</div><h3>KOL & Influencer</h3><p>End-to-end KOL partnerships: sourcing, briefing, campaign activation, and performance tracking to authentically expand brand reach.</p></div>
+    <div class="service-card"><div class="service-number">05</div><h3>Paid Advertising</h3><p>Strategic budget allocation and management for paid social campaigns designed to hit specific lead generation and sales conversion targets.</p></div>
+    <div class="service-card"><div class="service-number">06</div><h3>Analytics & Reporting</h3><p>Weekly/monthly reports on reach, engagement rate, saves, shares, and follower growth — with clear insights and recommendations.</p></div>
+  </div>
+</section>
+
+<section id="experience" class="experience">
+  <p class="section-tag">Experience</p>
+  <h2 class="section-title">Career timeline.</h2>
+  <p class="section-subtitle">Building brands across agencies, corporations, and creative studios.</p>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-date"><div class="timeline-date-label">Jul 2023 – Dec 2025</div><div class="timeline-company">TamankotaID Creative Agency</div></div><div class="timeline-content"><h3>TamankotaID</h3><p class="timeline-role">Social Media Manager</p><p>Led team of copywriters & designers. Developed multi-platform strategies, KOL collaborations, paid ad budgets. Grew MilkLife Soccer Challenge assets from zero to 50% month-on-month metric improvement. 90% client satisfaction through transparent reporting.</p></div></div>
+    <div class="timeline-item"><div class="timeline-date"><div class="timeline-date-label">Mar 2018 – Feb 2023</div><div class="timeline-company">JDL Express Indonesia</div></div><div class="timeline-content"><h3>JDL Express Indonesia</h3><p class="timeline-role">Brand & Content Supervisor</p><p>Built brand communication strategy for corporate & marketing. Managed YouTube, Instagram, LinkedIn, TikTok. Designed monthly campaigns for SME lead generation — SERBU 2021–2022 and JDL Fest 2022, each generating 200+ new leads/week. Managed KOL & PR.</p></div></div>
+    <div class="timeline-item"><div class="timeline-date"><div class="timeline-date-label">Nov 2016 – Feb 2018</div><div class="timeline-company">Various (Toolbar, San Remo, POKKA)</div></div><div class="timeline-content"><h3>Social Media Officer / Content Writer</h3><p class="timeline-role">Content & Social Media Strategist</p><p>Provided social media & content strategy for diverse clients (San Remo Pasta, POKKA Indonesia, Mama Lemon). Produced 15–30 contents per month, managed accounts, reported growth, and proposed thematic campaigns to meet client objectives.</p></div></div>
+  </div>
+</section>
+
+<section id="work" class="work">
+  <p class="section-tag">Selected projects</p>
+  <h2 class="section-title">Campaigns that delivered.</h2>
+  <p class="section-subtitle">Real projects, real results — from viral video series to lead-generating campaigns.</p>
+  <div class="work-grid">
+    <div class="work-card"><div class="work-card-img c1">▶ 2025</div><div class="work-card-body"><p class="work-card-tag">YouTube Campaign · TamankotaID</p><h3>Berani Jadi Juara</h3><p>Narrative-driven video series documenting MilkLife Soccer Challenge All-Stars at JSSL Singapore 7's 2025. Elevated event coverage into compelling brand campaign, boosting engagement & brand prestige. Role: Social media strategist & supervisor.</p></div></div>
+    <div class="work-card"><div class="work-card-img c2">10K+</div><div class="work-card-body"><p class="work-card-tag">eBook Campaign · JDL Express</p><h3>Ilmu Pengetahuan Seller (IPS)</h3><p>2-volume eBook collaboration with GoSend & Selly Indonesia, providing marketing strategy to online sellers during pandemic. Downloaded by 10,000+ SME sellers. Role: Content supervisor & copywriter.</p></div></div>
+    <div class="work-card"><div class="work-card-img c3">200 leads</div><div class="work-card-body"><p class="work-card-tag">Social Campaign · JDL Express</p><h3>SERBU — Serba 6 Ribu</h3><p>High-impact promotional campaign that generated 200+ new leads within a week, replicated across 2021-2022. Also JDL Fest: Return to Hope with similar conversion success.</p></div></div>
+    <div class="work-card"><div class="work-card-img c4">Brand collab</div><div class="work-card-body"><p class="work-card-tag">Brand Collaboration · JDL Express</p><h3>#CarryYourSmile × Visval</h3><p>Dual-brand awareness campaign with local apparel brand Visval. Showcased delivery experience to new audience. Role: Brand communication supervisor, copywriter & SMM.</p></div></div>
+  </div>
+</section>
+
+<!-- Extra portfolio integrations from porto2.pdf: brands & case highlights -->
+<section class="brand-showcase">
+  <div class="brand-grid">
+    <div class="brand-item">MilkLife Soccer Challenge</div>
+    <div class="brand-item">TamankotaID</div>
+    <div class="brand-item">JDL Express Indonesia</div>
+    <div class="brand-item">San Remo Pasta</div>
+    <div class="brand-item">POKKA Indonesia</div>
+    <div class="brand-item">Mama Lemon</div>
+    <div class="brand-item">Toolbar Agency</div>
+  </div>
+</section>
+
+<section class="case-studies">
+  <p class="section-tag">Deep dives</p>
+  <h2 class="section-title">360° campaigns &<br>KOL management.</h2>
+  <p class="section-subtitle">From editorial planning to influencer activations — additional highlights.</p>
+  <div class="casestudy-grid">
+    <div class="casestudy-card"><div class="work-card-img" style="background: linear-gradient(135deg, #4A6A5C, #2C4A3E);"><span>⚽</span> MilkLife Soccer Challenge</div><div class="work-card-body"><div class="role-badge">Strategy + KOL + PR</div><h3>Girls' grassroots football program</h3><p>Managed end-to-end social media strategy, editorial planning, KOL collaborations, press releases, and media placement. Grew channels from zero to consistent 50% monthly metric growth.</p></div></div>
+    <div class="casestudy-card"><div class="work-card-img" style="background: linear-gradient(135deg, #B47C48, #8B5A2B);"><span>📦</span> #CarryYourSmile & Esensi</div><div class="work-card-body"><div class="role-badge">Brand comms, copywriting</div><h3>JDL Express x Visval & Esensi</h3><p>Dual-brand collaboration campaigns to spread awareness and showcase delivery experience. Supervised video concept, storyline, and social media activation.</p></div></div>
+    <div class="casestudy-card"><div class="work-card-img" style="background: linear-gradient(135deg, #BF6F4A, #9C4F2E);"><span>🍋</span> POKKA Lemon Tea</div><div class="work-card-body"><div class="role-badge">Content Strategy & KOL</div><h3>"Asli Segarnya, Asli Enaknya"</h3><p>Handled social media for POKKA Lemon Tea & Honey Lemon. Developed content strategy, editorial plans, monitoring, reporting, and KOL management to amplify #TemanSegar campaign.</p></div></div>
+    <div class="casestudy-card"><div class="work-card-img" style="background: linear-gradient(135deg, #C49A6C, #A57848);"><span>🍝</span> San Remo Pasta Indonesia</div><div class="work-card-body"><div class="role-badge">Organic growth</div><h3>Brand awareness from scratch</h3><p>Created content strategy, monthly editorial plans, daily monitoring, and performance reports for Instagram & Facebook. Helped establish San Remo's digital presence in Indonesian market.</p></div></div>
+  </div>
+</section>
+
+<section class="achievements">
+  <p class="section-tag">By the numbers</p>
+  <h2 class="section-title">Results that speak.</h2>
+  <p class="section-subtitle">Highlights from 7+ years of building and scaling brand presences across Indonesia.</p>
+  <div class="achievements-grid">
+    <div class="achievement-card"><div class="achievement-stat">50%</div><h3>Monthly metric growth</h3><p>Consistent average 50% month-on-month improvement in key social metrics for MilkLife Soccer Challenge, grown from zero.</p></div>
+    <div class="achievement-card"><div class="achievement-stat">40.7%</div><h3>Follower growth</h3><p>Grew Instagram followers by 40.74% within 10 months through strategic content planning and community engagement.</p></div>
+    <div class="achievement-card"><div class="achievement-stat">5.6%</div><h3>Engagement rate</h3><p>Maintained 5.60% Instagram profile engagement — consistently above industry benchmark.</p></div>
+    <div class="achievement-card"><div class="achievement-stat">90%</div><h3>Client satisfaction</h3><p>Consistently maintained 90% client satisfaction rate through transparent reporting & proactive adjustments.</p></div>
+    <div class="achievement-card"><div class="achievement-stat">10K+</div><h3>eBook downloads</h3><p>"Ilmu Pengetahuan Seller" downloaded by 10,000+ online sellers — one of the most successful content assets at JDL Express.</p></div>
+    <div class="achievement-card"><div class="achievement-stat">10+</div><h3>Simultaneous projects</h3><p>Successfully managed team performance across 10+ concurrent client projects within 6-month period.</p></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <p class="section-tag">Let's connect</p>
+  <h2 class="section-title">Ready to grow<br>your brand?</h2>
+  <p class="section-subtitle">Whether you need full social media management, a strategy session, or a campaign partner — I'd love to hear about your goals.</p>
+  <a href="mailto:titisnurhayati4@gmail.com" class="contact-email">titisnurhayati4@gmail.com</a>
+  <br><br><br>
+  <div class="contact-links">
+    <a href="#" class="contact-link" target="_blank">LinkedIn →</a>
+    <a href="tel:+6282297205060" class="contact-link">+62 822-9720-5060</a>
+    <a href="mailto:titisnurhayati4@gmail.com" class="contact-link">Send an email →</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Siti Nurhayati Iskandar · Social Media Manager · Bogor, Indonesia
+</footer>
+</body>
+</html>
